@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "iomanip": "cpp",
+    "*.tcc": "cpp",
+    "iosfwd": "cpp",
+    "numeric": "cpp",
+    "functional": "cpp",
+    "tuple": "cpp",
+    "iostream": "cpp"
+  }
+}

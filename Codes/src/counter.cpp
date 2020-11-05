@@ -31,55 +31,65 @@ void Counter::read_and_count(){
 	//THIS FUNCTION WILL BE CODED BY YOU
 	Counter counter;
 	FILE* piApprox = fopen("pi_approximate", "r+");
+	fseek(piApprox, 0, SEEK_END);
+	long fileSize = ftell(piApprox);
 	fseek(piApprox, 0, SEEK_SET);
+	char char1;
 	int i=0;
+	int k = 0;
+	bool inDecimal = false;
 	Token tempTokenArray[100];
 	//int k=0;
 	//char currentToken[2];
 	//char tokens[198];
 	while (!feof(piApprox)) {
-		fread(tempTokenArray[i].token, 2, 1, piApprox);
-		bool didCountIncrease = false;
-		for (auto character : Counter::token_array)
+		fread(&char1, 1, 1, piApprox);
+		if (inDecimal)
 		{
-			if (strcmp(tempTokenArray[i].token, character.token) == 0)
+			int j = 0;
+			
+			tempTokenArray[i].token[j] = char1;
+			if (i != 0)
 			{
-				character.count++;
-				didCountIncrease = true;
+			tempTokenArray[i-1].token[j+1] = char1;
+			//saçma karakterler gelmesin diye
+			tempTokenArray[i-1].token[j+2] = 0;
+
+			for (int l = 0; l < 100; l++)
+			{
+			string counterArray(Counter::token_array[l].token);
+			string token(tempTokenArray[i-1].token);
+			cout << strstr(tempTokenArray[i-1].token,Counter::token_array[l].token) <<endl;
+			if (counterArray.find(token))
+			{
+			Counter::token_array[k].token[0] = tempTokenArray[i-1].token[0];
+			Counter::token_array[k].token[1] = tempTokenArray[i-1].token[1];
+			}}
+			
+			cout << tempTokenArray[i-1].token<<endl;
+			if (strcmp(tempTokenArray[i-1].token,"35")== 0)
+			{
+				cout<<"found 35 yay" <<endl;
 			}
-		}
-		if (didCountIncrease)
-		{
-			cout<<"increased";
-			continue;
-		}
-		
-		if (atoi(tempTokenArray[i].token) >= 10  )
-		{
-			//cout << tempTokenArray[i].token <<endl;
-			Counter::token_array[i] = tempTokenArray[i];
-			Counter::token_count ++;
-			Counter::token_array[i].count ++;
-			cout << Counter::token_array[i].count <<endl;
-			if (strcmp(Counter::token_array[i].token ,"14") == 0)
+			if (strcmp(tempTokenArray[i-1].token,"9 ")== 0)
 			{
-				cout << Counter::token_array[i].token<<endl;
+				cout<<"found 9  yay" <<endl;
+			}
+			
+			}
+			i+=1;
+			if (i == fileSize-3)
+			{
+				break;
 			}
 			
 		}
-			i+=1;
+		if (strcmp(&char1,".") == 0)
+		{
+			inDecimal = true;
+		}
 		
-	}
-	fseek(piApprox, 3, SEEK_SET);
-	while (!feof(piApprox)) {
-		//fread(&tokens[i], 2, 1, piApprox);
-		//fread(&counter.token_array[i], 2, 1, piApprox);
-		fread(Counter::token_array[i].token, 2, 1, piApprox);
-		//cout << Counter::token_array[100].token <<endl;
-		//cout << counter.token_array->token<<endl;
-		//cout << counter.token_array->token << endl;
-		//cout << tokens[0] <<endl;
-		i+=1;
+		
 	}
 	
 	contains(&counter.token_array->token[0],*counter.token_array->token);

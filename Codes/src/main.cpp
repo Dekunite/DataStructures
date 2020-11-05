@@ -20,8 +20,8 @@ void display();
 void display_most_common_three();
 
 int main(int argc, char* argv[]){
-	system("clear");// make this line as comment if you are compiling on Linux or Mac
-	//system("cls"); // make this line as comment if you are compiling on Windows
+	//system("clear");// make this line as comment if you are compiling on Linux or Mac
+	system("cls"); // make this line as comment if you are compiling on Windows
 	counter.read_and_count();
 	bool end = false; 
 	char choice; 	

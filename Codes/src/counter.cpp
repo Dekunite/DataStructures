@@ -15,10 +15,9 @@ using namespace std;
 int Counter::findindex(Token *arr,char elem[]){
 	//THIS FUNCTION WILL BE CODED BY YOU
 	char* order;
-	for (int i = 0; i < Counter::token_count ; i++)
+	for (int i = 0; i < 70 ; i++)
 	{
 		order = strstr(arr[i].token, elem);
-		cout<<order<<endl;
 		if (order != NULL)
 		{
 			return i;
@@ -122,7 +121,7 @@ void Counter::read_and_count(){
 			inDecimal = true;
 		}
 		
-		fclose(piApprox);
+		//fclose(piApprox);
 	}
 	//findindex(Counter::token_array, "14");
 	

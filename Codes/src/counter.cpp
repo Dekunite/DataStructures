@@ -134,42 +134,40 @@ void Counter::read_and_count(){
 Token *Counter::get_most_common_three(){
 	//THIS FUNCTION WILL BE CODED BY YOU
 	int COMMON_SIZE = 3;
-	Token mostCommon3Tokens[COMMON_SIZE];
+	static Token mostCommon3Tokens[3];
 	Token* ptr;
+	Token* ptr2;
+	Token* ptr3;
 	int currentMax = 0;
 
 	for (int i = 0; i < Counter::token_count; i++)
 	{
-		if (Counter::token_array[i].count > currentMax)
-		{
-			currentMax = Counter::token_array[i].count;
-			for (int j = 0; j < COMMON_SIZE; j++)
+		for (int j = 0; j < COMMON_SIZE; j++)
 			{
-				if (currentMax >= mostCommon3Tokens[j].count)
+				if (Counter::token_array[i].count >= mostCommon3Tokens[j].count)
 				{
-					mostCommon3Tokens[j+2] = mostCommon3Tokens[j+1];
-					mostCommon3Tokens[j+1] = mostCommon3Tokens[j];
+						mostCommon3Tokens[j+2] = mostCommon3Tokens[j+1];
+						mostCommon3Tokens[j+1] = mostCommon3Tokens[j];
 
-					mostCommon3Tokens[j].token[0] = Counter::token_array[i].token[0];
-					mostCommon3Tokens[j].token[1] = Counter::token_array[i].token[1];
-					mostCommon3Tokens[j].token[2] = Counter::token_array[i].token[2];
-					mostCommon3Tokens[j].count = currentMax;
-					break;
-				}
-				
+						mostCommon3Tokens[j].token[0] = Counter::token_array[i].token[0];
+						mostCommon3Tokens[j].token[1] = Counter::token_array[i].token[1];
+						mostCommon3Tokens[j].token[2] = Counter::token_array[i].token[2];
+						mostCommon3Tokens[j].count = Counter::token_array[i].count;
+						break;
+				} 
 			}
-			
-		}
-		
-		
 	}
+
 	
 	for (int k = 0; k < COMMON_SIZE; k++)
 	{
 	cout << mostCommon3Tokens[k].token << " " << mostCommon3Tokens[k].count <<endl;
 	}
+	ptr = &mostCommon3Tokens[0];
+	ptr2 = &mostCommon3Tokens[1];
+	ptr3 = &mostCommon3Tokens[2];
 
-	
-	
-	return ptr;
+	Token* common_three[3] = {ptr,ptr2,ptr3};
+
+	return common_three[0];
 }

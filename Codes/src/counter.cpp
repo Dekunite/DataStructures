@@ -169,5 +169,5 @@ Token *Counter::get_most_common_three(){
 
 	Token* common_three[3] = {ptr,ptr2,ptr3};
 
-	return common_three[0];
+	return ptr;
 }

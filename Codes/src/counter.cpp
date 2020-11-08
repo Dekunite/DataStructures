@@ -15,7 +15,7 @@ using namespace std;
 int Counter::findindex(Token *arr,char elem[]){
 	//THIS FUNCTION WILL BE CODED BY YOU
 	char* order;
-	for (int i = 0; i < 70 ; i++)
+	for (int i = 0; i < Counter::token_count ; i++)
 	{
 		order = strstr(arr[i].token, elem);
 		if (order != NULL)
@@ -120,7 +120,6 @@ void Counter::read_and_count(){
 		{
 			inDecimal = true;
 		}
-		
 		//fclose(piApprox);
 	}
 	//findindex(Counter::token_array, "14");
@@ -134,5 +133,43 @@ void Counter::read_and_count(){
 
 Token *Counter::get_most_common_three(){
 	//THIS FUNCTION WILL BE CODED BY YOU
-	return 0;
+	int COMMON_SIZE = 3;
+	Token mostCommon3Tokens[COMMON_SIZE];
+	Token* ptr;
+	int currentMax = 0;
+
+	for (int i = 0; i < Counter::token_count; i++)
+	{
+		if (Counter::token_array[i].count > currentMax)
+		{
+			currentMax = Counter::token_array[i].count;
+			for (int j = 0; j < COMMON_SIZE; j++)
+			{
+				if (currentMax >= mostCommon3Tokens[j].count)
+				{
+					mostCommon3Tokens[j+2] = mostCommon3Tokens[j+1];
+					mostCommon3Tokens[j+1] = mostCommon3Tokens[j];
+
+					mostCommon3Tokens[j].token[0] = Counter::token_array[i].token[0];
+					mostCommon3Tokens[j].token[1] = Counter::token_array[i].token[1];
+					mostCommon3Tokens[j].token[2] = Counter::token_array[i].token[2];
+					mostCommon3Tokens[j].count = currentMax;
+					break;
+				}
+				
+			}
+			
+		}
+		
+		
+	}
+	
+	for (int k = 0; k < COMMON_SIZE; k++)
+	{
+	cout << mostCommon3Tokens[k].token << " " << mostCommon3Tokens[k].count <<endl;
+	}
+
+	
+	
+	return ptr;
 }

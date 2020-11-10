@@ -22,17 +22,13 @@ int Counter::findindex(Token *arr,char elem[]){
 		{
 			return i;
 		}
-		
 	}
-	
-	//int index = strchr(arr->token, elem[0]) - arr->token;
-
 	return -1;
 } 
 
 bool Counter::contains(char *token, char target){
 	//THIS FUNCTION WILL BE CODED BY YOU
-	if (strcmp(token, &target) == 0)
+	if (*token == target)
 		{
 			return true;
 		}
@@ -55,6 +51,7 @@ void Counter::read_and_count(){
 	bool newToken = false;
 	bool *newTokenPtr = &newToken;
 	char isPresent;
+	char prevChar;
 	
 	while (!feof(piApprox)) {
 		fread(&char1, 1, 1, piApprox);
@@ -62,9 +59,9 @@ void Counter::read_and_count(){
 		{
 			int j = 0;
 			
-			tempTokenArray[i].token[j] = char1;
 			if (i != 0)
 			{
+				tempTokenArray[i-1].token[j] = prevChar;
 				tempTokenArray[i-1].token[j+1] = char1;
 				//saçma karakterler gelmesin diye
 				tempTokenArray[i-1].token[j+2] = 0;
@@ -99,9 +96,9 @@ void Counter::read_and_count(){
 			{
 				break;
 			}
-			
+			prevChar = char1;
 		}
-		if (strcmp(&char1,".") == 0)
+		if (contains(&char1, '.'))
 		{
 			inDecimal = true;
 		}

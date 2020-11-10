@@ -1,6 +1,13 @@
 /*
 YOU HAVE TO WRITE THE REQUIRED  FUNCTIONS. YOU CAN ADD NEW FUNCTIONS IF YOU NEED.
 */
+
+/* @Author
+Student Name: <Muhammet Derviş Kopuz>
+Student ID : <504201531>
+Date: <10.11.2020> */
+
+
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -92,7 +99,7 @@ void Counter::read_and_count(){
 				}
 			}
 			i+=1;
-			if (i == fileSize-3)
+			if (i == fileSize-2)
 			{
 				break;
 			}

@@ -2,6 +2,11 @@
 PLEASE DO NOT REMOVE ANY FUNCTION OR VARIABLE IN THE STRUCT, IF YOU NEED YOU CAN ADD NEW ONES 
 */
 
+/* @Author
+Student Name: <Muhammet Derviş Kopuz>
+Student ID : <504201531>
+Date: <10.11.2020> */
+
 #ifndef _H
 #define _H
 #include <stdio.h>

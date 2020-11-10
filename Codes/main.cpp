@@ -2,6 +2,11 @@
 PLEASE DO NOT CHANGE THIS FILE, OTHERWISE YOUR CODE WILL NOT BE EVALUATED AND WILL BE GRADED AS 0 
 */
 
+/* @Author
+Student Name: <Muhammet Derviş Kopuz>
+Student ID : <504201531>
+Date: <10.11.2020> */
+
 #include <iostream> 
 #include <stdlib.h>
 #include <iomanip>
